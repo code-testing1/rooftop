@@ -16,3 +16,22 @@ model.compile(
     loss=bce_dice_loss,
     metrics=[tf.keras.metrics.MeanIoU(num_classes=2)]
 )
+
+
+# Count the number of roof pixels vs. background pixels
+total_pixels = np.prod(Y_train.shape)
+roof_pixels = np.sum(Y_train)
+background_pixels = total_pixels - roof_pixels
+
+print(f"Roof Pixels: {roof_pixels}, Background Pixels: {background_pixels}")
+
+#if imbalance too high
+roof_weight = background_pixels / total_pixels
+bg_weight = roof_pixels / total_pixels
+
+loss = tf.keras.losses.BinaryCrossentropy(from_logits=True)
+weighted_loss = lambda y_true, y_pred: loss(y_true, y_pred) * (y_true * roof_weight + (1 - y_true) * bg_weight)
+
+
+optimizer = tf.keras.optimizers.Adam(learning_rate=5e-5)  # Reduce LR
+model.compile(optimizer=optimizer, loss=bce_dice_loss, metrics=[tf.keras.metrics.MeanIoU(num_classes=2)])
