@@ -42,3 +42,22 @@ model.compile(
 
 # Print summary
 model.summary()
+
+
+# Define callbacks for better training performance
+callbacks = [
+    tf.keras.callbacks.ModelCheckpoint("best_model.h5", save_best_only=True, monitor="val_loss"),
+    tf.keras.callbacks.ReduceLROnPlateau(monitor="val_loss", factor=0.5, patience=3, verbose=1),
+    tf.keras.callbacks.EarlyStopping(monitor="val_loss", patience=6, restore_best_weights=True)
+]
+
+# Train the model
+history = model.fit(
+    train_generator,
+    epochs=30,  # Adjust as needed
+    steps_per_epoch=len(X_train) // batch_size,
+    validation_data=(X_val, Y_val),
+    batch_size=batch_size,
+    callbacks=callbacks
+)
+
