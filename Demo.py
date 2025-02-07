@@ -61,3 +61,32 @@ history = model.fit(
     callbacks=callbacks
 )
 
+
+
+import matplotlib.pyplot as plt
+
+# Get training history
+history_dict = history.history
+
+# Plot IoU
+plt.figure(figsize=(12, 5))
+plt.subplot(1, 2, 1)
+plt.plot(history_dict['mean_io_u'], label="Train IoU")
+plt.plot(history_dict['val_mean_io_u'], label="Val IoU")
+plt.xlabel("Epochs")
+plt.ylabel("Mean IoU")
+plt.title("Training & Validation IoU")
+plt.legend()
+plt.grid()
+
+# Plot Loss
+plt.subplot(1, 2, 2)
+plt.plot(history_dict['loss'], label="Train Loss")
+plt.plot(history_dict['val_loss'], label="Val Loss")
+plt.xlabel("Epochs")
+plt.ylabel("Loss")
+plt.title("Training & Validation Loss")
+plt.legend()
+plt.grid()
+
+plt.show()
