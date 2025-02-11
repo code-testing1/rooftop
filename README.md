@@ -10,3 +10,7 @@ sudo apt update && sudo apt upgrade -y
 sudo apt install update-manager-core
 sudo nano /etc/update-manager/release-upgrades
 sudo do-release-upgrade -d
+
+
+
+sir gave me village data for rooftop segementation. It has ony 1 big image of village of 800mb and having 23351 × 22361 pixels. along with this image it has its annotaions, but I am not understanding this. Annotations has differernt files ending with, .cpg, .dbf, .prj, .sbn, .sbx, .shp, .shx
