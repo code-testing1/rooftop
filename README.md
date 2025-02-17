@@ -20,3 +20,9 @@ sir gave me village data for rooftop segementation. It has ony 1 big image of vi
 
 sir gave me village data for rooftop segementation. It has ony 1 big image of village, Marhara, of 800mb and having 23351 × 22361 pixels. along with this image it has its annotaions, but I am not understanding this. Annotations has differernt files ending with, .cpg, .dbf, .prj, .sbn, .sbx, .shp, .shx. how to read this data to train my model, and also which files I needed for training, there are Electric_Pole, Marhara_All_Layer, Marhara_Village, Potential_Area, RCC, Road, Road_Center, Settlement_Extent, Solar, Tree, Vacant_Space, Waterbodies. each of them has file ending with these extensions as mentioned above.
 after this how am i supoosed to make the dataset? the training images and labels? can i some how use the this file to identify to the rooftop insteasd of making converting this into a mask?
+
+
+
+#######
+I created the mask, now i need to divide it into various patches for training, how to do that. but the problem is if i just directly divide it into 512x512 it may reduce the quality and since the house in my village are very close, few patches will be all white. how can i solve this issue while making patches. can  I overlap the patches, it also increasese the pacthes and make sure to keep only 20% of all black patches, aka which dont have any white pixel.
+#######
