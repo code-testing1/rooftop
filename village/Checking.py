@@ -27,3 +27,10 @@ if mask is not None:
     # For instance, visualize 200x200 top-left region
     sub_region = mask[0:200, 0:200]
     print("Sub-region unique values:", np.unique(sub_region))
+
+''''
+Image shape: (22361, 23351, 3)
+Mask shape: (22361, 23351)
+Mask unique values: [  0 255]
+Sub-region unique values: [0]
+''''
